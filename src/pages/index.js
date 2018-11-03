@@ -6,11 +6,24 @@ import Image from '../components/image'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hello, Jamstack world!</h1>
-    <p>Welcome my first Jamstack web app.</p>
-    <p>Come take a look at my <a href="https://tatumalenko.github.io/"> Github page</a>.</p>
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
+    <div class="container">
+      <div>
+        <h2>Enter your Git Accounts</h2>
+        <form>
+          Username:
+          <input type="text" name="username" />
+          <br />
+          Github Username:
+          <input type="text" name="github-username" />
+          <br />
+          Gitlab Username:
+          <input type="text" name="gitlab-username" />
+          <br />
+          <button class="btn waves-effect waves-light" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>

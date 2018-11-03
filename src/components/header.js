@@ -1,33 +1,25 @@
 import React from 'react'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="https://materializecss.com" class="brand-logo">
+        Commit RPG
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a href="https://materializecss.com">My Profile</a>
+        </li>
+        <li>
+          <a href="https://materializecss.com">Store</a>
+        </li>
+        <li>
+          <a href="https://materializecss.com">Log Out</a>
+        </li>
+      </ul>
     </div>
-  </div>
+  </nav>
 )
 
 export default Header
