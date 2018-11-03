@@ -1,22 +1,20 @@
 {
-    "files.autoSave": "off",
-    "eslint.enable": true,
-    "eslint.autoFixOnSave": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-        "editor.formatOnSave": false,
-        "editor.formatOnType": false
-    },
-    "[markdown]": {
-        "editor.wordWrap": "on",
-        "editor.quickSuggestions": true,
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true
-    },
-    "[json]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true
-    },
-    "editor.detectIndentation": false,
-    "editor.tabSize": 2,
+  "files.autoSave": "off",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+  },
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2
 }
