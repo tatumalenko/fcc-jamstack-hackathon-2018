@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import Image from '../components/image'
+import CommitHistory from '../components/CommitHistory'
+//import Image from '../components/image'
 
 const IndexPage = () => (
   <Layout>
     <div class="container">
-      <div>
-        <h2>Enter your Git Accounts</h2>
+      <div class="section">
+        <h3 class="red-text">Enter your Git Accounts</h3>
         <form>
           Username:
           <input type="text" name="username" />
@@ -24,7 +25,10 @@ const IndexPage = () => (
           </button>
         </form>
       </div>
+
+      <CommitHistory />
     </div>
+
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )

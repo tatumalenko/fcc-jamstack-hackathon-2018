@@ -4,18 +4,18 @@ import React from 'react'
 const Header = ({ siteTitle }) => (
   <nav>
     <div class="nav-wrapper">
-      <a href="https://materializecss.com" class="brand-logo">
+      <a href="http://localhost:8000/" class="brand-logo">
         Commit RPG
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
-          <a href="https://materializecss.com">My Profile</a>
+          <a href="http://localhost:8000/">My Profile</a>
         </li>
         <li>
-          <a href="https://materializecss.com">Store</a>
+          <a href="http://localhost:8000/">Store</a>
         </li>
         <li>
-          <a href="https://materializecss.com">Log Out</a>
+          <a href="http://localhost:8000/">Log Out</a>
         </li>
       </ul>
     </div>
