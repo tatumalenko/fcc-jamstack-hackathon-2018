@@ -1,4 +1,4 @@
-export default config = {
+const config = {
   github: {
     base: 'https://api.github.com',
     
@@ -8,3 +8,5 @@ export default config = {
     token: 'sySs66YmvPVXy_Yuxgrc'
   }
 };
+
+module.exports = config;
