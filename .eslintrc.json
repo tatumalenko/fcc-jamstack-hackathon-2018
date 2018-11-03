@@ -24,6 +24,8 @@
     "no-use-before-define": "off",
     "consistent-return": "off",
     "no-console": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
     "indent": [
       "error",
       2,
