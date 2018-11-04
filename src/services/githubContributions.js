@@ -113,7 +113,7 @@ const convertCommitMapToCounts = async commitMap => {
   return commitDateCounts.sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
-const getAllUserCommitsForContributionCalendar = async userName => {
+const getAllUserCommitsForContributionCalendar_github = async userName => {
   const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo(userName);
   const commitMap = await convertCommitsPerWeekPerRepoToMap(
     commitsPerWeekPerRepo
@@ -130,7 +130,7 @@ const testIt = async () => {
   // );
   // const commitCounts = await convertCommitMapToCounts(commitMap);
   // console.log(commitCounts);
-  const commitCounts = await getAllUserCommitsForContributionCalendar(
+  const commitCounts = await getAllUserCommitsForContributionCalendar_github(
     'tatumalenko'
   );
   console.log(commitCounts);

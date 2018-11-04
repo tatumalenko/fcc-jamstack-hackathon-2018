@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Commit RPG',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -9,6 +9,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['material icons', 'roboto:300,400,500,700'],
       },
     },
     'gatsby-transformer-sharp',
@@ -27,4 +33,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};

@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 const Header = ({ siteTitle }) => (
   <nav>
     <div class="nav-wrapper">
-      <a href="http://localhost:8000/" class="brand-logo">
+      <Link to="/homepage/" className="brand-logo">
         Commit RPG
-      </a>
+      </Link>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
           <Link to="/">My Profile</Link>
