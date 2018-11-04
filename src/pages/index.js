@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import CommitHistory from '../components/CommitHistory';
+import Calendar from '../components/Calendar';
 //import Image from '../components/image'
 
 class IndexPage extends React.Component {
@@ -42,6 +43,7 @@ class IndexPage extends React.Component {
             </form>
           </div>
 
+          <Calendar />
           <CommitHistory />
         </div>
 
