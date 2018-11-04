@@ -1,82 +1,134 @@
-const config = require('./config');
 const axios = require('axios');
+const config = require('../../.config/config');
 const { githubHeaders } = require('./headers');
 
+function addDays(date, days) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+
+  return result;
+}
+
 const getUserRepos = async username => {
-  const res = await axios.get(`${config.github.base}/users/${username}/repos`, {
-    headers: githubHeaders,
-  });
+  const res = await axios.get(
+    `${config.github.base}/users/${username}/repos?page=1&per_page=100`,
+    {
+      headers: githubHeaders,
+    }
+  );
   const reposName = res.data.map(repo => repo.name);
+
   return reposName;
 };
 
-// get all commit data within a year
+// Get all commit data within a year
 const getCommitsByDay = async (userName, repoName) => {
   // TODO: filter by startDate and endDate
-  // Time stored in UNIX => startDate & endDate should be converted to Unix
   const commitsByDay = await axios.get(
     `${config.github.base}/repos/${userName}/${repoName}/stats/commit_activity`,
     { headers: githubHeaders }
   );
-  // .then(res => {
-  //   const allCommits = res.data;
-  //   return Promise.resolve(allCommits);
-  // })
-  // .catch(err => console.log(err));
   return commitsByDay.data;
 };
 
-const getAllCommitsByDay = async userName => {
+const getAllCommitsPerDayPerRepo = async userName => {
   const userRepos = await getUserRepos(userName);
 
-  const commitsByDayPerRepo = await Promise.all(
+  const commitsPerDayPerRepo = await Promise.all(
     userRepos.map(async repoName => {
       return await getCommitsByDay(userName, repoName);
     })
   );
 
-  return commitsByDayPerRepo;
+  return commitsPerDayPerRepo;
+};
+
+const convertCommitsPerWeekPerRepoToMap = async commitPerWeekPerRepo => {
+  const commitMap = new Map();
+
+  commitPerWeekPerRepo.forEach(repo => {
+    if (!Array.isArray(repo)) return;
+
+    repo.forEach(commitWeek => {
+      let date = new Date(0);
+      date.setUTCSeconds(commitWeek.week);
+      commitWeek.days.forEach((day, index) => {
+        date = addDays(date, index > 0 ? 1 : 0);
+        const key = date.toISOString().substring(0, 10);
+        commitMap.set(key, commitMap.has(key) ? commitMap.get(key) + day : day);
+      });
+    });
+  });
+
+  return commitMap;
 };
 
 // get total number of commits of a repo in the last 52 weeks, organized by week
-const getCommitsPerRepo = async (userName, repoName) => {
-  const a = await axios.get(
-    `${config.github.base}/repos/${userName}/${repoName}/stats/participation`,
-    { headers: githubHeaders }
-  );
-  return a.data.owner;
+// const getCommitsPerRepo = async (userName, repoName) => {
+//   const a = await axios.get(
+//     `${config.github.base}/repos/${userName}/${repoName}/stats/participation`,
+//     { headers: githubHeaders }
+//   );
+//   return a.data.owner;
+// };
+
+// const getTotalCommits = async userName => {
+//   const reposName = await getUserRepos(userName);
+
+//   const totalCommits = await Promise.all(
+//     reposName.map(async repoName => {
+//       const commitsPerRepo = await getCommitsPerRepo(userName, repoName);
+//       return commitsPerRepo;
+//     })
+//   );
+
+//   const totalCommitsFlat = new Array(52).fill(0);
+//   for (let repo of totalCommits) {
+//     for (let i = 0; i < repo.length; i++) {
+//       totalCommitsFlat[i] += repo[i];
+//     }
+//   }
+//   return totalCommitsFlat;
+// };
+
+const convertCommitMapToCounts = async commitMap => {
+  const commitDateCounts = [];
+
+  commitMap.forEach((value, key, map) => {
+    commitDateCounts.push({
+      date: key,
+      count: value,
+    });
+  });
+
+  return commitDateCounts.sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
-const getTotalCommits = async userName => {
-  const reposName = await getUserRepos(userName);
-
-  const totalCommits = await Promise.all(
-    reposName.map(async repoName => {
-      const commitsPerRepo = await getCommitsPerRepo(userName, repoName);
-      return commitsPerRepo;
-    })
+const getAllUserCommitsForContributionCalendar = async userName => {
+  const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo(userName);
+  const commitMap = await convertCommitsPerWeekPerRepoToMap(
+    commitsPerWeekPerRepo
   );
+  const commitCounts = await convertCommitMapToCounts(commitMap);
 
-  const totalCommitsFlat = new Array(52).fill(0);
-  for (let repo of totalCommits) {
-    for (let i = 0; i < repo.length; i++) {
-      totalCommitsFlat[i] += repo[i];
-    }
-  }
-  return totalCommitsFlat;
+  return commitCounts;
 };
 
 const testIt = async () => {
-  // return await getTotalCommits('anhtm');
-  const allCommitsByDay = await getAllCommitsByDay('tatumalenko');
-  console.log(allCommitsByDay);
+  // const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo('tatumalenko');
+  // const commitMap = await convertCommitsPerWeekPerRepoToMap(
+  //   commitsPerWeekPerRepo
+  // );
+  // const commitCounts = await convertCommitMapToCounts(commitMap);
+  // console.log(commitCounts);
+  const commitCounts = await getAllUserCommitsForContributionCalendar(
+    'tatumalenko'
+  );
+  console.log(commitCounts);
 };
 
-testIt();
+// testIt();
 
 module.exports = {
-  getUserRepos,
-  getCommitsByDay,
-  getCommitsPerRepo,
-  getTotalCommits,
+  getAllUserCommitsForContributionCalendar,
 };
