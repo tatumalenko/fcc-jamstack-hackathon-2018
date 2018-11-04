@@ -1,6 +1,7 @@
-export default config = {
+const config = {
   github: {
     base: 'https://api.github.com',
+    token: '89e25d145b5e6f5bd91ebc4091d0db9517d36ceb'
     
   },
   gitlab: {
@@ -8,3 +9,5 @@ export default config = {
     token: 'sySs66YmvPVXy_Yuxgrc'
   }
 };
+
+module.exports = config;
