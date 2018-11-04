@@ -1,12 +1,12 @@
-const config = {
+require('dotenv').config();
+
+module.exports = {
   github: {
     base: 'https://api.github.com',
-    token: '3ed6869b9f7da55c907665121c961a6f4a91f211',
+    token: process.env.GITHUB_TOKEN,
   },
   gitlab: {
     base: 'https://gitlab.com/api/v4',
-    token: 'sySs66YmvPVXy_Yuxgrc',
+    token: process.env.GITLAB_TOKEN,
   },
 };
-
-module.exports = config;

@@ -97,7 +97,7 @@ const testIt = async () => {
 };
 
 // RUN ME TO TEST
-// testIt();
+testIt();
 
 module.exports = {
   getAllUserCommitsForContributionCalendar,
