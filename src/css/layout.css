@@ -25,3 +25,36 @@ code {
 .landscape {
   max-height: 200px;
 }
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.fill img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('../images/jantine-doornbos-398339-unsplash.jpg') no-repeat center
+      center;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-size: 24px;
+}

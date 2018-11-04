@@ -1,13 +1,5 @@
-const config = require('../../.config/config.json');
 const axios = require('axios');
-
-const sameDay = (date1, date2) => {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getDate() === date2.getDate() &&
-    date1.getMonth() === date2.getMonth()
-  );
-};
+const config = require('../../.config/config');
 
 const getUser = async userName => {
   const response = await axios.get(
@@ -98,14 +90,14 @@ const testIt = async () => {
   // const dates = await getAllUserCommitDates(commits);
   // const map = await generateUserCommitMap(dates);
   // HOW TO USE FUNCTION TO USE WITH CONTRIBUTION CALENDAR
-  // const commitCounts = await getAllUserCommitsForContributionCalendar(
-  //   'eighthave'
-  // );
-  // console.log(commitCounts);
+  const commitCounts = await getAllUserCommitsForContributionCalendar(
+    'eighthave'
+  );
+  console.log(commitCounts);
 };
 
 // RUN ME TO TEST
-// testIt();
+testIt();
 
 module.exports = {
   getAllUserCommitsForContributionCalendar,
