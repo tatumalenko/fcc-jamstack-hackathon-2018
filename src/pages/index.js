@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { navigate } from 'gatsby';
 import Layout from '../components/layout';
+// import CommitHistory from '../components/CommitHistory';
+import Achievements from '../components/Achievements';
+import Badges from '../components/Badges';
+//import Image from '../components/image'
 import InputField from '../components/InputField';
 import Calendar from '../components/Calendar';
 
@@ -39,6 +43,8 @@ class IndexPage extends React.Component {
               <div>
                 <h3 class="red-text">Enter your Git Accounts</h3>
 
+          <Badges />
+          <Achievements />
                 <form onSubmit={e => this.handleSubmit(e)}>
                   <InputField
                     name="username"
