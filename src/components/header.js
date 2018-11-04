@@ -5,7 +5,7 @@ const Header = ({ siteTitle }) => (
   <nav>
     <div className="nav-wrapper black">
       <Link to="/homepage/" className="brand-logo">
-        Gitcha
+        GitBit
       </Link>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li>

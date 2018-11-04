@@ -33,7 +33,7 @@ class IndexPage extends React.Component {
         <div className="container">
           <div>
             {!this.state.submitted ? (
-              <div>
+              <div className="center account">
                 <h3 className="col s12 grey-text">Enter your Git Accounts</h3>
                 <form onSubmit={e => this.handleSubmit(e)}>
                   <InputField
@@ -68,6 +68,7 @@ class IndexPage extends React.Component {
                   githubUsername={this.state.githubUsername}
                   gitlabUsername={this.state.gitlabUsername}
                 />
+                <Badges />
                 <Achievements />
               </div>
             )}

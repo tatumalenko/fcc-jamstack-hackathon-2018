@@ -62,3 +62,8 @@ code {
 .reward {
   height: 200px;
 }
+
+.account {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
