@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
-import CommitHistory from '../components/CommitHistory';
+// import CommitHistory from '../components/CommitHistory';
+import Achievements from '../components/Achievements';
+import Badges from '../components/Badges';
 //import Image from '../components/image'
 
 class IndexPage extends React.Component {
@@ -42,7 +44,8 @@ class IndexPage extends React.Component {
             </form>
           </div>
 
-          <CommitHistory />
+          <Badges />
+          <Achievements />
         </div>
 
         <Link to="/store/">Go to page 2</Link>
