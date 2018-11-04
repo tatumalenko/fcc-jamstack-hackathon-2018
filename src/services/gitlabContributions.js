@@ -65,6 +65,14 @@ const generateUserCommitMap = async dates => {
   return map;
 };
 
+const generateUserCommitMapFromUserName = async userName => {
+  const commits = await getAllUserCommits(userName);
+  const dates = await getAllUserCommitDates(commits);
+  const map = await generateUserCommitMap(dates);
+
+  return map;
+};
+
 const getAllUserCommitsForContributionCalendar = async userName => {
   const commits = await getAllUserCommits(userName);
   const dates = await getAllUserCommitDates(commits);
@@ -97,8 +105,9 @@ const testIt = async () => {
 };
 
 // RUN ME TO TEST
-testIt();
+// testIt();
 
 module.exports = {
+  generateUserCommitMapFromUserName,
   getAllUserCommitsForContributionCalendar,
 };

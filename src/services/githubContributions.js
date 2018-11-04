@@ -63,6 +63,15 @@ const convertCommitsPerWeekPerRepoToMap = async commitPerWeekPerRepo => {
   return commitMap;
 };
 
+const generateUserCommitMapFromUserName = async userName => {
+  const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo(userName);
+  const commitMap = await convertCommitsPerWeekPerRepoToMap(
+    commitsPerWeekPerRepo
+  );
+
+  return commitMap;
+};
+
 // get total number of commits of a repo in the last 52 weeks, organized by week
 // const getCommitsPerRepo = async (userName, repoName) => {
 //   const a = await axios.get(
@@ -130,5 +139,6 @@ const testIt = async () => {
 // testIt();
 
 module.exports = {
+  generateUserCommitMapFromUserName,
   getAllUserCommitsForContributionCalendar,
 };
