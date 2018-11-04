@@ -1,0 +1,61 @@
+[
+  {
+    "label": "Daily Achievements",
+    "milestones": [
+      {
+        "label": "Commit twice",
+        "value": 2
+      },
+      {
+        "label": "Commit 5 times",
+        "value": 5
+      },
+      {
+        "label": "Commit 10 times",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "label": "Weekly Achievements",
+    "milestones": [
+      {
+        "label": "Commit for 1 day",
+        "value": 1
+      },
+      {
+        "label": "Commit for 3 days in a row",
+        "value": 3
+      },
+      {
+        "label": "Commit for 5 days in a row",
+        "value": 5
+      },
+      {
+        "label": "Commit for 7 days in a row",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "label": "Yearly Achievements",
+    "milestones": [
+      {
+        "label": "Commit 50 times",
+        "value": 50
+      },
+      {
+        "label": "Commit 100 times",
+        "value": 100
+      },
+      {
+        "label": "Commit 200 times",
+        "value": 200
+      },
+      {
+        "label": "Commit 500 times",
+        "value": 500
+      }
+    ]
+  }
+]
