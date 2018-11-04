@@ -8,14 +8,21 @@ class Calendar extends React.Component {
   constructor() {
     super();
     this.state = {
-      gitlabData: [],
+      allData: [],
     };
   }
 
-  componentDidMount() {
-    getAllUserCommitsForContributionCalendar('catalinp86').then(data => {
-      this.setState({ gitlabData: data });
-    });
+  componentDidMount() {}
+
+  async fetchAll() {
+    const gitlabData = await getAllUserCommitsForContributionCalendar(
+      this.props.gitlabUsername
+    );
+    const githubData = [];
+
+    if (gitlabData && githubData) {
+      this.setState({ allData: gitlabData.concat(githubData) });
+    }
   }
 
   render() {
@@ -24,7 +31,7 @@ class Calendar extends React.Component {
         <CalendarHeatMap
           startDate={new Date('2018-01-01')}
           endDate={new Date('2018-12-31')}
-          values={this.state.gitlabData}
+          values={this.state.allData}
           classForValue={value => {
             if (!value) {
               return 'color-empty';
@@ -34,6 +41,7 @@ class Calendar extends React.Component {
         />
       );
     }
+    return <div />;
   }
 }
 
