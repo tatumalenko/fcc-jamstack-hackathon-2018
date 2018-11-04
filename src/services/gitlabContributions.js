@@ -65,7 +65,15 @@ const generateUserCommitMap = async dates => {
   return map;
 };
 
-const getAllUserCommitsForContributionCalendar_gitlab = async userName => {
+const generateUserCommitMapFromUserName = async userName => {
+  const commits = await getAllUserCommits(userName);
+  const dates = await getAllUserCommitDates(commits);
+  const map = await generateUserCommitMap(dates);
+
+  return map;
+};
+
+const getAllUserCommitsForContributionCalendar = async userName => {
   const commits = await getAllUserCommits(userName);
   const dates = await getAllUserCommitDates(commits);
   const map = await generateUserCommitMap(dates);
@@ -97,8 +105,9 @@ const testIt = async () => {
 };
 
 // RUN ME TO TEST
-testIt();
+// testIt();
 
 module.exports = {
-  getAllUserCommitsForContributionCalendar_gitlab,
+  generateUserCommitMapFromUserName,
+  getAllUserCommitsForContributionCalendar,
 };
