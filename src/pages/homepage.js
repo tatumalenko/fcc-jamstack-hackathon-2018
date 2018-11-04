@@ -12,6 +12,10 @@ const Home = () => (
           CommitRPG is a game that encourages new developers to create a habit
           of coding regularly and helping them become better developpers
         </h4>
+        <a class="waves-effect waves-light btn-large">
+          <i class="material-icons left">laptop_mac</i>
+          Start Now
+        </a>
       </div>
     </div>
     <div className="section container">
