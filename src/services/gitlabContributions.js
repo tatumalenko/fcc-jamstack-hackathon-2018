@@ -5,7 +5,7 @@ const sameDay = (date1, date2) => {
   return (
     date1.getFullYear() === date2.getFullYear() &&
     date1.getDate() === date2.getDate() &&
-    date1.getMonth() === date3.getMonth()
+    date1.getMonth() === date2.getMonth()
   );
 };
 
@@ -106,3 +106,7 @@ const testIt = async () => {
 
 // RUN ME TO TEST
 // testIt();
+
+module.exports = {
+  getAllUserCommitsForContributionCalendar,
+};
