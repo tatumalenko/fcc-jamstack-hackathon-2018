@@ -1,13 +1,5 @@
-const config = require('../../.config/config.json');
 const axios = require('axios');
-
-const sameDay = (date1, date2) => {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getDate() === date2.getDate() &&
-    date1.getMonth() === date3.getMonth()
-  );
-};
+const config = require('../../.config/config');
 
 const getUser = async userName => {
   const response = await axios.get(
@@ -73,6 +65,14 @@ const generateUserCommitMap = async dates => {
   return map;
 };
 
+const generateUserCommitMapFromUserName = async userName => {
+  const commits = await getAllUserCommits(userName);
+  const dates = await getAllUserCommitDates(commits);
+  const map = await generateUserCommitMap(dates);
+
+  return map;
+};
+
 const getAllUserCommitsForContributionCalendar = async userName => {
   const commits = await getAllUserCommits(userName);
   const dates = await getAllUserCommitDates(commits);
@@ -98,11 +98,16 @@ const testIt = async () => {
   // const dates = await getAllUserCommitDates(commits);
   // const map = await generateUserCommitMap(dates);
   // HOW TO USE FUNCTION TO USE WITH CONTRIBUTION CALENDAR
-  // const commitCounts = await getAllUserCommitsForContributionCalendar(
-  //   'eighthave'
-  // );
-  // console.log(commitCounts);
+  const commitCounts = await getAllUserCommitsForContributionCalendar_gitlab(
+    'eighthave'
+  );
+  console.log(commitCounts);
 };
 
 // RUN ME TO TEST
 // testIt();
+
+module.exports = {
+  generateUserCommitMapFromUserName,
+  getAllUserCommitsForContributionCalendar,
+};
