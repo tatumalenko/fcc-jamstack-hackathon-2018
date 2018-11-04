@@ -1,0 +1,11 @@
+{
+  "daily_achievements": {
+    "label": "Daily Achievements",
+    "milestones": [
+      {
+        "label": "Commit twice",
+        "value": 2
+      }
+    ]
+  }
+}
