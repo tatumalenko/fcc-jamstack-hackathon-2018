@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Commit RPG',
+    title: 'Gitbit - A habit-building game for new developers',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
