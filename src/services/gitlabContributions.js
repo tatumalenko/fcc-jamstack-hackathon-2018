@@ -98,7 +98,7 @@ const testIt = async () => {
   // const dates = await getAllUserCommitDates(commits);
   // const map = await generateUserCommitMap(dates);
   // HOW TO USE FUNCTION TO USE WITH CONTRIBUTION CALENDAR
-  const commitCounts = await getAllUserCommitsForContributionCalendar_gitlab(
+  const commitCounts = await getAllUserCommitsForContributionCalendar(
     'eighthave'
   );
   console.log(commitCounts);

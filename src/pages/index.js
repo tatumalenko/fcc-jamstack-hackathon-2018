@@ -26,8 +26,6 @@ class IndexPage extends React.Component {
     e.preventDefault();
     if (this.state.githubUsername && this.state.gitlabUsername) {
       this.setState({ submitted: true });
-      window.localStorage.setItem('github', this.state.githubUsername);
-      window.localStorage.setItem('gitlab', this.state.gitlabUsername);
     }
   }
 
@@ -39,9 +37,6 @@ class IndexPage extends React.Component {
             {!this.state.submitted ? (
               <div>
                 <h3 class="red-text">Enter your Git Accounts</h3>
-
-          <Badges />
-          <Achievements />
                 <form onSubmit={e => this.handleSubmit(e)}>
                   <InputField
                     name="username"
@@ -67,10 +62,14 @@ class IndexPage extends React.Component {
                 </form>
               </div>
             ) : (
-              <Calendar
-                githubUsername={this.state.githubUsername}
-                gitlabUsername={this.state.gitlabUsername}
-              />
+              <div>
+                <Calendar
+                  githubUsername={this.state.githubUsername}
+                  gitlabUsername={this.state.gitlabUsername}
+                />
+                {/* <Badges />
+                <Achievements /> */}
+              </div>
             )}
           </div>
         </div>

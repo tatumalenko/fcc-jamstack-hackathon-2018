@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 class CommitHistory extends React.Component {
   render() {
     return (
-      <div class="section">
+      <div className="section">
         <h3>My Commit History</h3>
-        <table class="striped">
+        <table className="striped">
           <thead>
             <tr>
               <th>Date</th>
@@ -37,8 +37,8 @@ class CommitHistory extends React.Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
 
-export default CommitHistory
+export default CommitHistory;
