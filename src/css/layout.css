@@ -16,3 +16,12 @@ code {
 .brand-logo {
   margin-left: 1em;
 }
+
+.cover {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.landscape {
+  max-height: 200px;
+}
