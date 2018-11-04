@@ -10,27 +10,29 @@ class Calendar extends React.Component {
     super();
     this.state = {
       allData: [],
+      github: [],
+      gitlab: [],
     };
   }
 
   componentDidMount() {
-    this.fetchAll();
-  }
+    // this.fetchAll();
 
-  async fetchAll() {
-    const gitlabData = await getAllUserCommitsForContributionCalendar_gitlab(
-      this.props.gitlabUsername
-    );
-
-    console.log('gitlabData', gitlabData);
-    const githubData = await getAllUserCommitsForContributionCalendar_github(
-      this.props.githubUsername
-    );
-    console.log('githubData', githubData);
-
-    if (gitlabData && githubData) {
-      this.setState({ allData: gitlabData.concat(githubData) });
-    }
+    getAllUserCommitsForContributionCalendar_github(this.props.githubUsername)
+      .then(data => {
+        this.setState({ github: data });
+        return getAllUserCommitsForContributionCalendar_gitlab(
+          this.props.gitlabUsername
+        );
+      })
+      .then(data => {
+        console.log('Gitlab data', data);
+        this.setState({ gitlab: data }, () =>
+          this.setState({
+            allData: this.state.github.concat(this.state.gitlab),
+          })
+        );
+      });
   }
 
   render() {

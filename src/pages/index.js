@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { navigate } from 'gatsby';
 import Layout from '../components/layout';
 import InputField from '../components/InputField';
 import Calendar from '../components/Calendar';
@@ -30,7 +28,6 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Layout>
         <div class="container">
