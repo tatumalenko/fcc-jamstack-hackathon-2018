@@ -4,6 +4,8 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 
 class Achievements extends React.Component {
+  componentDidMount() {}
+
   render() {
     return (
       <div className="row">
