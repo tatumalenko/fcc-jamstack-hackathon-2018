@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Commit RPG',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -27,4 +27,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};
