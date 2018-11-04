@@ -70,7 +70,7 @@ const Home = () => (
                   class="grey-text text-lighten-3"
                   href="https://github.com/anhtm"
                 >
-                  Minh Anh Trang
+                  Minh Anh Trinh
                 </a>
               </li>
               <li>

@@ -4,9 +4,13 @@ const gitlab = require('./gitlabContributions');
 const fetchDevContributionsMap = async ({ githubUserName, gitlabUserName }) => {
   const combinedCommitMap = new Map();
 
-  ghCommitMap = await github.generateUserCommitMapFromUserName(githubUserName);
+  const ghCommitMap = await github.generateUserCommitMapFromUserName(
+    githubUserName
+  );
 
-  glCommitMap = await gitlab.generateUserCommitMapFromUserName(gitlabUserName);
+  const glCommitMap = await gitlab.generateUserCommitMapFromUserName(
+    gitlabUserName
+  );
 
   ghCommitMap.forEach((value, key) => {
     const otherValue = glCommitMap.get(key) ? glCommitMap.get(key) : 0;

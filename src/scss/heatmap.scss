@@ -1,0 +1,77 @@
+$grey: #eeeeee;
+$green-lighten-5: #e8f5e9;
+$green-lighten-4: #c8e6c9;
+$green-lighten-3: #a5d6a7;
+$green-lighten-2: #81c784;
+$green-lighten-1: #66bb6a;
+$green: #4caf50;
+$green-darken-1: #43a047;
+$green-darken-2: #388e3c;
+$green-darken-3: #2e7d32;
+$green-darken-4: #1b5e20;
+
+@for $i from 1 through 10 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-5
+  }
+}
+
+@for $i from 11 through 20 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-4
+  }
+}
+
+@for $i from 21 through 30 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-3
+  }
+}
+
+@for $i from 31 through 40 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-2
+  }
+}
+
+@for $i from 41 through 50 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-1
+  }
+}
+
+@for $i from 51 through 60 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-lighten-1
+  }
+}
+
+@for $i from 61 through 70 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green
+  }
+}
+
+@for $i from 71 through 80 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-darken-1
+  }
+}
+
+@for $i from 81 through 90 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-darken-2
+  }
+}
+
+@for $i from 91 through 100 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-darken-3
+  }
+}
+
+@for $i from 100 through 500 {
+  .react-calendar-heatmap .color-scale-#{$i} {
+    fill: $green-darken-4
+  }
+}
