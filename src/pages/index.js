@@ -1,51 +1,76 @@
 import React from 'react';
 import { Link } from 'gatsby';
-
+import { navigate } from 'gatsby';
 import Layout from '../components/layout';
-import CommitHistory from '../components/CommitHistory';
-//import Image from '../components/image'
+import InputField from '../components/InputField';
+import Calendar from '../components/Calendar';
 
 class IndexPage extends React.Component {
-  handleChange = event => {
-    console.log(event.currentTarget.value);
-    if (event.currentTarget.value === '') {
-      console.log('cleared!!');
-      var name = document.getElementById('github-username').value;
-      console.log(name);
-      document.getElementById('github-username').value = '';
-      document.getElementById('gitlab-username').value = '';
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      githubUsername: '',
+      gitlabUsername: '',
+      submitted: false,
+    };
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.githubUsername && this.state.gitlabUsername) {
+      this.setState({ submitted: true });
+      window.localStorage.setItem('github', this.state.githubUsername);
+      window.localStorage.setItem('gitlab', this.state.gitlabUsername);
     }
-  };
+  }
 
   render() {
+    console.log(this.state);
     return (
       <Layout>
         <div class="container">
-          <div class="section">
-            <h3 class="red-text">Enter your Git Accounts</h3>
-            <form>
-              Username:
-              <input type="text" name="username" onChange={this.handleChange} />
-              <br />
-              Github Username:
-              <input id="github-username" type="text" name="github-username" />
-              <br />
-              Gitlab Username:
-              <input id="gitlab-username" type="text" name="gitlab-username" />
-              <br />
-              <button class="btn waves-effect waves-light" type="submit">
-                Submit
-              </button>
-              {/* <button class="btn waves-effect waves-light" type="forgot password" onsubmit={}> */}
-              {/* Forgot Password? */}
-              {/* </button> */}
-            </form>
+          <div>
+            {!this.state.submitted ? (
+              <div>
+                <h3 class="red-text">Enter your Git Accounts</h3>
+
+                <form onSubmit={e => this.handleSubmit(e)}>
+                  <InputField
+                    name="username"
+                    value={this.state.username}
+                    label="Username"
+                    handleChange={e => this.handleChange(e)}
+                  />
+                  <InputField
+                    name="githubUsername"
+                    value={this.state.githubUsername}
+                    label="Github Username"
+                    handleChange={e => this.handleChange(e)}
+                  />
+                  <InputField
+                    name="gitlabUsername"
+                    value={this.state.gitlabUsername}
+                    label="Gitlab Username"
+                    handleChange={e => this.handleChange(e)}
+                  />
+                  <button class="btn waves-effect waves-light" type="submit">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Calendar
+                githubUsername={this.state.githubUsername}
+                gitlabUsername={this.state.gitlabUsername}
+              />
+            )}
           </div>
-
-          <CommitHistory />
         </div>
-
-        <Link to="/store/">Go to page 2</Link>
       </Layout>
     );
   }
