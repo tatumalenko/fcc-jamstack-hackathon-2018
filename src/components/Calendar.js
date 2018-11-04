@@ -40,10 +40,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log(process.env.GITHUB_TOKEN);
-    console.log(process.env.GITLAB_TOKEN);
-
     if (this.state.calendarMap) {
       return (
         <div>
