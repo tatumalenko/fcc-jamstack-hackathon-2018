@@ -3,7 +3,7 @@ import React from 'react';
 class InputField extends React.Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <label>{this.props.label}</label>
         <input
           type="text"

@@ -1,6 +1,6 @@
 import React from 'react';
-// import { Link } from 'gatsby';
-
+import { Link } from 'gatsby';
+import Image from '../components/image';
 import Layout from '../components/layout';
 
 const Home = () => (
@@ -12,10 +12,12 @@ const Home = () => (
           CommitRPG is a game that encourages new developers to create a habit
           of coding regularly and helping them become better developpers
         </h4>
-        <a class="waves-effect waves-light btn-large">
-          <i class="material-icons left">laptop_mac</i>
-          Start Now
-        </a>
+        <Link to="/">
+          <a class="waves-effect waves-light btn-large">
+            <i class="material-icons left">laptop_mac</i>
+            Start Now
+          </a>
+        </Link>
       </div>
     </div>
     <div className="section container">
@@ -45,7 +47,7 @@ const Home = () => (
         </div>
       </div>
     </div>
-    <footer class="page-footer">
+    <footer class="page-footer black">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">

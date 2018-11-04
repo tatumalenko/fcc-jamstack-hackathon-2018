@@ -26,23 +26,40 @@ class Calendar extends React.Component {
       gitlabUserName: this.props.gitlabUsername,
     });
     const calendarMap = await convertCommitMapToCountsArray(commitMap);
-    this.setState({ commitMap, calendarMap });
+    this.setState({ commitMap, calendarMap }, () => {
+      localStorage.setItem('commitMap', JSON.stringify(this.state.commitMap));
+    });
+  }
+
+  convertMapToObj(aMap) {
+    const obj = {};
+    aMap.forEach((v, k) => {
+      obj[k] = v;
+    });
+    return obj;
   }
 
   render() {
+    console.log(this.state);
+    console.log(process.env.GITHUB_TOKEN);
+    console.log(process.env.GITLAB_TOKEN);
+
     if (this.state.calendarMap) {
       return (
-        <CalendarHeatMap
-          startDate={new Date('2018-01-01')}
-          endDate={new Date('2018-12-31')}
-          values={this.state.calendarMap}
-          classForValue={value => {
-            if (!value) {
-              return 'color-empty';
-            }
-            return `color-scale-${value.count}`;
-          }}
-        />
+        <div>
+          <h3 className="grey-text text-darken-3">Calendar</h3>
+          <CalendarHeatMap
+            startDate={new Date('2018-01-01')}
+            endDate={new Date('2018-12-31')}
+            values={this.state.calendarMap}
+            classForValue={value => {
+              if (!value) {
+                return 'color-empty';
+              }
+              return `color-scale-${value.count}`;
+            }}
+          />
+        </div>
       );
     }
     return <div>Loading...</div>;

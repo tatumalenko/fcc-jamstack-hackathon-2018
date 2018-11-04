@@ -1,5 +1,3 @@
-// require('dotenv').config();
-
 module.exports = {
   github: {
     base: 'https://api.github.com',

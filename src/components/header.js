@@ -3,11 +3,11 @@ import { Link } from 'gatsby';
 
 const Header = ({ siteTitle }) => (
   <nav>
-    <div className="nav-wrapper">
+    <div className="nav-wrapper black">
       <Link to="/homepage/" className="brand-logo">
-        Commit RPG
+        Gitcha
       </Link>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li>
           <Link to="/">My Profile</Link>
         </li>

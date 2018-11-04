@@ -1,9 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
-// import CommitHistory from '../components/CommitHistory';
 import Achievements from '../components/Achievements';
 import Badges from '../components/Badges';
-//import Image from '../components/image'
 import InputField from '../components/InputField';
 import Calendar from '../components/Calendar';
 
@@ -32,11 +30,11 @@ class IndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <div class="container">
+        <div className="container">
           <div>
             {!this.state.submitted ? (
               <div>
-                <h3 class="red-text">Enter your Git Accounts</h3>
+                <h3 className="col s12 grey-text">Enter your Git Accounts</h3>
                 <form onSubmit={e => this.handleSubmit(e)}>
                   <InputField
                     name="username"
@@ -56,7 +54,10 @@ class IndexPage extends React.Component {
                     label="Gitlab Username"
                     handleChange={e => this.handleChange(e)}
                   />
-                  <button class="btn waves-effect waves-light" type="submit">
+                  <button
+                    className="btn waves-effect waves-light"
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </form>
@@ -67,8 +68,7 @@ class IndexPage extends React.Component {
                   githubUsername={this.state.githubUsername}
                   gitlabUsername={this.state.gitlabUsername}
                 />
-                {/* <Badges />
-                <Achievements /> */}
+                <Achievements />
               </div>
             )}
           </div>
