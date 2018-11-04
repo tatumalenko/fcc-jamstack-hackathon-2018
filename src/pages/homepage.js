@@ -78,8 +78,11 @@ const Home = () => (
                 </a>
               </li>
               <li>
-                <a class="grey-text text-lighten-3" href="#!">
-                  Catalin
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://github.com/catalinp86"
+                >
+                  Catalin Popescu
                 </a>
               </li>
             </ul>
