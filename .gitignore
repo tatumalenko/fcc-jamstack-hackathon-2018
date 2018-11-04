@@ -9,3 +9,6 @@ yarn-error.log
 
 # Env stuff
 .env
+
+# Lint-remover
+.eslintrc
