@@ -65,7 +65,7 @@ const generateUserCommitMap = async dates => {
   return map;
 };
 
-const getAllUserCommitsForContributionCalendar = async userName => {
+const getAllUserCommitsForContributionCalendar_gitlab = async userName => {
   const commits = await getAllUserCommits(userName);
   const dates = await getAllUserCommitDates(commits);
   const map = await generateUserCommitMap(dates);
@@ -90,7 +90,7 @@ const testIt = async () => {
   // const dates = await getAllUserCommitDates(commits);
   // const map = await generateUserCommitMap(dates);
   // HOW TO USE FUNCTION TO USE WITH CONTRIBUTION CALENDAR
-  const commitCounts = await getAllUserCommitsForContributionCalendar(
+  const commitCounts = await getAllUserCommitsForContributionCalendar_gitlab(
     'eighthave'
   );
   console.log(commitCounts);
@@ -100,5 +100,5 @@ const testIt = async () => {
 testIt();
 
 module.exports = {
-  getAllUserCommitsForContributionCalendar,
+  getAllUserCommitsForContributionCalendar_gitlab,
 };

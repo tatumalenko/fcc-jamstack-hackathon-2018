@@ -16,10 +16,6 @@ class IndexPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log('localstorage', window.localStorage);
-  }
-
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
