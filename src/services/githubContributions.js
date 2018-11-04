@@ -72,34 +72,6 @@ const generateUserCommitMapFromUserName = async userName => {
   return commitMap;
 };
 
-// get total number of commits of a repo in the last 52 weeks, organized by week
-// const getCommitsPerRepo = async (userName, repoName) => {
-//   const a = await axios.get(
-//     `${config.github.base}/repos/${userName}/${repoName}/stats/participation`,
-//     { headers: githubHeaders }
-//   );
-//   return a.data.owner;
-// };
-
-// const getTotalCommits = async userName => {
-//   const reposName = await getUserRepos(userName);
-
-//   const totalCommits = await Promise.all(
-//     reposName.map(async repoName => {
-//       const commitsPerRepo = await getCommitsPerRepo(userName, repoName);
-//       return commitsPerRepo;
-//     })
-//   );
-
-//   const totalCommitsFlat = new Array(52).fill(0);
-//   for (let repo of totalCommits) {
-//     for (let i = 0; i < repo.length; i++) {
-//       totalCommitsFlat[i] += repo[i];
-//     }
-//   }
-//   return totalCommitsFlat;
-// };
-
 const convertCommitMapToCounts = async commitMap => {
   const commitDateCounts = [];
 
@@ -113,7 +85,7 @@ const convertCommitMapToCounts = async commitMap => {
   return commitDateCounts.sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
-const getAllUserCommitsForContributionCalendar_github = async userName => {
+const getAllUserCommitsForContributionCalendar = async userName => {
   const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo(userName);
   const commitMap = await convertCommitsPerWeekPerRepoToMap(
     commitsPerWeekPerRepo
@@ -124,13 +96,7 @@ const getAllUserCommitsForContributionCalendar_github = async userName => {
 };
 
 const testIt = async () => {
-  // const commitsPerWeekPerRepo = await getAllCommitsPerDayPerRepo('tatumalenko');
-  // const commitMap = await convertCommitsPerWeekPerRepoToMap(
-  //   commitsPerWeekPerRepo
-  // );
-  // const commitCounts = await convertCommitMapToCounts(commitMap);
-  // console.log(commitCounts);
-  const commitCounts = await getAllUserCommitsForContributionCalendar_github(
+  const commitCounts = await getAllUserCommitsForContributionCalendar(
     'tatumalenko'
   );
   console.log(commitCounts);

@@ -42,10 +42,6 @@ const getAllUserCommits = async (
 };
 
 const getAllUserCommitDates = async commits => {
-  // const dates =
-  // let commitData = {
-  //   totalDate:
-  // };
   const dates = await Promise.all(
     commits.map(async commit => {
       return commit.committed_date.substring(0, 10);
@@ -92,13 +88,7 @@ const getAllUserCommitsForContributionCalendar = async userName => {
 };
 
 const testIt = async () => {
-  // console.log(await getUserRepos('catalinp86'));
-  // console.log(await getUserRepoIds('catalinp86'));
-  // const commits = await getAllUserCommits('catalinp86');
-  // const dates = await getAllUserCommitDates(commits);
-  // const map = await generateUserCommitMap(dates);
-  // HOW TO USE FUNCTION TO USE WITH CONTRIBUTION CALENDAR
-  const commitCounts = await getAllUserCommitsForContributionCalendar_gitlab(
+  const commitCounts = await getAllUserCommitsForContributionCalendar(
     'eighthave'
   );
   console.log(commitCounts);
